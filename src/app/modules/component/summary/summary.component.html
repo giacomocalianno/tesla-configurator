@@ -1,0 +1,39 @@
+<div>
+  <!-- Title -->
+  <h1>Step 3: Summary</h1>
+  <h2>Your Tesla {{ chosenModelDescription() }}</h2>
+
+  <div>
+    <span
+      >{{ selectedConfig()?.description }}
+      {{ selectedConfig()?.price | currency : "USD" }}</span
+    >
+    <br />
+    <span
+      >Range: {{ selectedConfig()?.range }} miles - Max Speed:
+      {{ selectedConfig()?.speed }}</span
+    >
+  </div>
+
+  <div *ngIf="chosenColor()?.description && chosenColor()?.price">
+    {{ chosenColor()?.description }} -
+    {{ chosenColor()?.price | currency : "USD" }}
+  </div>
+
+  <div>
+    <span *ngIf="towHitch()"
+      >Tow Hitch Package: {{ towHitchCost() | currency : "USD" }}</span
+    >
+    <br />
+    <span *ngIf="yoke()"
+      >Yoke Package: {{ yokeCost() | currency : "USD" }}</span
+    >
+  </div>
+
+  <div>Total cost: {{ totalCost() | currency : "USD" }}</div>
+
+  <!-- Image section -->
+  <div style="width: 100%">
+    <img width="100%" [src]="imgSrc" />
+  </div>
+</div>

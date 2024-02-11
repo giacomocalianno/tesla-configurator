@@ -1,0 +1,18 @@
+.container {
+  margin: 10px;
+  padding: 0px;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.step {
+  width: 100%;
+  border: 1px solid white;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(46, 46, 46);
+  cursor: pointer;
+}

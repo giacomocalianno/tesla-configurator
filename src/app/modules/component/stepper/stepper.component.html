@@ -1,0 +1,38 @@
+<div class="container">
+  <button
+    id="step1"
+    class="step"
+    [routerLink]="['/']"
+    routerLinkActive="router-link-active"
+  >
+    Step 1
+  </button>
+
+  <button
+    id="step2"
+    class="step"
+    [routerLink]="isStepOneCompleted() ? ['/config-and-options'] : null"
+    routerLinkActive="router-link-active"
+    [ngStyle]="{
+      cursor: isStepOneCompleted() ? 'pointer' : 'not-allowed',
+      opacity: isStepOneCompleted() ? '1' : '0.5'
+    }"
+  >
+    Step 2
+  </button>
+
+  <button
+    id="step3"
+    class="step"
+    [routerLink]="isStepTwoCompleted() ? ['/summary'] : null"
+    routerLinkActive="router-link-active"
+    [ngStyle]="{
+      cursor: isStepTwoCompleted() ? 'pointer' : 'not-allowed',
+      opacity: isStepTwoCompleted() ? '1' : '0.5'
+    }"
+  >
+    Step 3
+  </button>
+</div>
+
+<router-outlet></router-outlet>

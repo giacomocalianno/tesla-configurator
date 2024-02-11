@@ -1,0 +1,62 @@
+<div>
+  <!-- Title -->
+  <h1>Step 2: Select your config and options</h1>
+
+  <!-- Config section -->
+  <div>
+    Config:
+    <select
+      (change)="handleClickConfig($event)"
+      id="configSelect"
+      placeholder="Choose"
+    >
+      <option disabled selected>Choose...</option>
+      <option
+        *ngFor="let config of configs()"
+        [selected]="config.id === selectedConfigId()"
+        [value]="config.id"
+      >
+        {{ config.description }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Info config section -->
+  <div style="margin-top: 10px" *ngIf="selectedConfig()">
+    Range: {{ selectedConfig()?.range }} - Max speed:
+    {{ selectedConfig()?.speed }} - Cost:
+    {{ selectedConfig()?.price | currency : "USD" }}
+  </div>
+
+  <!-- Tow Hitch checkbox -->
+  <div
+    style="display: flex; margin-top: 10px"
+    *ngIf="configsResponse()?.towHitch"
+  >
+    Tow hitch?
+    <input
+      type="checkbox"
+      id="includeTow"
+      [checked]="towHitchFormControl"
+      #includeTow
+      (change)="handleChangeTow(includeTow.checked)"
+    />
+  </div>
+
+  <!-- Yoke steering wheel checkbox -->
+  <div style="display: flex; margin-top: 10px" *ngIf="configsResponse()?.yoke">
+    Yoke steering wheel?
+    <input
+      type="checkbox"
+      id="includeYoke"
+      [checked]="yokeFormControl"
+      #includeYoke
+      (change)="handleChangeYoke(includeYoke.checked)"
+    />
+  </div>
+
+  <!-- Image section -->
+  <div style="width: 100%" style="margin-top: 10px">
+    <img width="100%" [src]="imgSrc" />
+  </div>
+</div>

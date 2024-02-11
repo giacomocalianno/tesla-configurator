@@ -1,0 +1,42 @@
+<div>
+  <!-- Title -->
+  <h1>Step 1: Choose your Model and color</h1>
+
+  <!-- Dropdown section -->
+  <div style="display: flex">
+    <!-- Model section -->
+    <div>
+      Model:
+      <select (change)="handleClickModel($event)" id="modelSelect">
+        <option disabled selected>Choose...</option>
+        <option
+          *ngFor="let model of models()"
+          [selected]="model.code === chosenModel()"
+          [value]="model.code"
+        >
+          {{ model.description }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Color section -->
+    <div *ngIf="chosenModel()">
+      Color:
+      <select (change)="handleClickColor($event)" id="colorSelect">
+        <option disabled>Choose...</option>
+        <option
+          *ngFor="let color of colors()"
+          [selected]="color.code === chosenColorCode()"
+          [value]="color.code"
+        >
+          {{ color.description }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Image section -->
+  <div style="width: 100%">
+    <img width="100%" [src]="imgSrc()" />
+  </div>
+</div>
